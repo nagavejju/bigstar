@@ -5,12 +5,19 @@ import com.zaxxer.hikari.HikariDataSource
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.jdbc.core.JdbcTemplate
+import org.springframework.jdbc.datasource.DataSourceTransactionManager
+import org.springframework.transaction.support.TransactionTemplate
 
 @Configuration
 open class DataSourceConfig {
     @Bean
     open fun getJdbcTemplate(): JdbcTemplate {
         return JdbcTemplate(getDataSource())
+    }
+
+    @Bean
+    open fun getTransactionTemplate(): TransactionTemplate {
+        return TransactionTemplate(DataSourceTransactionManager(getDataSource()))
     }
 
     fun getDataSource(): HikariDataSource {

@@ -1,3 +1,5 @@
 package io.barinek.bigstar.accounts
 
-data class Account(val name: String, val totalContractValue: Double = 0.00)
+import java.time.Instant
+
+data class Account(val id: Long?, val name: String, val totalContractValue: Double = 0.00, val analyzerIdentifier: String, val analyzedAt: Instant)

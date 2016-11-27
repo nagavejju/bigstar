@@ -45,7 +45,7 @@ The application assumes you're deploying to a platform as a service. You'll need
 ```
 export PORT=8080
 
-export VCAP_SERVICES='{ "services": { "p-mysql": [ { "credentials": { "jdbcUrl": "jdbc:mysql://localhost:3306/bigstar_test?user=root&password=" } } ] } }'
+export VCAP_SERVICES='{ "services": { "p-mysql": [ { "credentials": { "jdbcUrl": "jdbc:mysql://localhost:3306/bigstar_test?user=root&password=&useTimezone=true&serverTimezone=UTC" } } ] } }'
 ```
 
 ## Database Setup

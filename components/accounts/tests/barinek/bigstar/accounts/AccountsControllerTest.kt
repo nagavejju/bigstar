@@ -40,11 +40,11 @@ open class AccountsControllerTest() {
     @Test
     fun testGetMetrics() {
         DataSourceConfig().getJdbcTemplate().update("""
-            insert into accounts (name, total_contract_value)
+            insert into accounts (name, total_contract_value, analyzer_identifier, last_analyzed_at)
              values
-             ('John\'s Grocery, Inc.', 6000000),
-             ('Hamburg Inn No. 2', 0),
-             ('Record Collector', 1400000)
+             ('John\'s Grocery, Inc.', 6000000, uuid(), (now() - interval 6 minute)),
+             ('Hamburg Inn No. 2', 0, uuid(), (now() - interval 6 minute)),
+             ('Record Collector', 1400000, uuid(), (now() - interval 6 minute))
         """)
 
         val port = 8081
